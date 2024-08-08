@@ -14,23 +14,24 @@ public:
 	short act;
 	short choosetr;
 	Registration();
+	~Registration();
 	void regProcess();
 };
 
 class ActException : public std::exception
 {
 public:
-	const char* what() const override;
+	virtual const char* what() const noexcept;
 };
 
 class RepeatTransportException : std::exception
 {
 public:
-	const char* what() const override;
+	virtual const char* what() const noexcept;
 };
 
 class WrongTransportTypeException : std::exception
 {
 public:
-	const char* what() const override;
+	virtual const char* what() const noexcept;
 };

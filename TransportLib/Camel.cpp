@@ -10,10 +10,29 @@ Camel::Camel() : GroundTransport()
 	relax2 = 8;
 }
 
+Camel::~Camel() = default;
+
 float Camel::get_time(int distance)
 {
-	float drivingtime = static_cast<float>(distance) / static_cast<float>(pace);
-	int stopscount = drivingtime / acttime;
+	float drivingtime;
+	int stopscount;
+	try
+	{
+		if (pace == 0 || acttime == 0)
+		{
+			throw DivNullException();
+		}
+		else
+		{
+			drivingtime = static_cast<float>(distance) / static_cast<float>(pace);
+			stopscount = drivingtime / acttime;
+		}
+	}
+	catch (const DivNullException& ex)
+	{
+		std::cout << ex.what();
+		return -1;
+	}
 	float stopstime{ 0 };
 	if (stopscount == 0)
 	{

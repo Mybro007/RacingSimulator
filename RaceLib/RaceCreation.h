@@ -27,11 +27,12 @@ class RACE_API RaceCreation
 {
 public:
 	RaceCreation();
+	~RaceCreation();
 	int raceTypeChoose;
 };
 
 class RaceTypeException : public std::exception
 {
 public:
-	const char* what() const override;
+	virtual const char* what() const noexcept;
 };

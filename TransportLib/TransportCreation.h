@@ -37,6 +37,7 @@ class TRANSPORT_API TransportCreation
 	
 public:
 	TransportCreation();
+	~TransportCreation();
 	int transportTypeChoose;
 };
 

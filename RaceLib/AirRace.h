@@ -4,4 +4,5 @@ class RACE_API AirRace : public Race
 {
 public:
 	AirRace();
+	~AirRace();
 };

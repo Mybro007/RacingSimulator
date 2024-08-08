@@ -4,5 +4,6 @@ class RACE_API ComboRace : public Race
 {
 public:
 	ComboRace();
+	~ComboRace();
 };
 

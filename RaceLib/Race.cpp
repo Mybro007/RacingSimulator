@@ -21,3 +21,5 @@ std::string Race::getType()
 {
 	return raceType;
 }
+
+Race::~Race() = default;

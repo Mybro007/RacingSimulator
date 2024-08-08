@@ -44,7 +44,7 @@ int main()
 class MainActException : public std::exception
 {
 public:
-	const char* what() const override
+	virtual const char* what() const noexcept
 	{
 		return "Wrong action!!! Try again: ";
 	}

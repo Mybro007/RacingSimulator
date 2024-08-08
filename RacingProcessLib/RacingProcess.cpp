@@ -19,3 +19,5 @@ RacingProcess::RacingProcess(Registration reg, Race* rac)
 		std::cout << i + 1 << ". " << reg.participants[i]->get_name() << ". " << "Time: " << reg.participants[i]->get_time(rac->getDistance()) << "\n";
 	}
 }
+
+RacingProcess::~RacingProcess() = default;

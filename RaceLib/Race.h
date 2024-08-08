@@ -18,6 +18,7 @@ protected:
 	std::string raceType;
 public:
 	Race();
+	virtual ~Race();
 	int getDistance();
 	std::string getType();
 };

@@ -4,5 +4,6 @@ class RACE_API GroundRace : public Race
 {
 public:
 	GroundRace();
+	~GroundRace();
 };
 

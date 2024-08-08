@@ -1,5 +1,6 @@
 #include "MagicCarpet.h"
 
+
 MagicCarpet::MagicCarpet(int distance) : AirTransport(distance)
 {
 	name = "Magic Carpet";
@@ -22,9 +23,26 @@ MagicCarpet::MagicCarpet(int distance) : AirTransport(distance)
 	}
 }
 
+MagicCarpet::~MagicCarpet() = default;
+
 float MagicCarpet::get_time(int distance)
 {
 	float changeddistance = distance * rdctn_fac;
-	racetime = changeddistance / static_cast<float>(pace);
+	try
+	{
+		if (pace == 0)
+		{
+			throw DivNullException();
+		}
+		else
+		{
+			racetime = changeddistance / static_cast<float>(pace);
+		}
+	}
+	catch (const DivNullException& ex)
+	{
+		std::cout << ex.what();
+		return -1;
+	}
 	return racetime;
 }

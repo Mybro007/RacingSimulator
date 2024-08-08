@@ -1,17 +1,17 @@
 #include "Registration.h"
 #include<vector>
 
-const char* ActException::what() const
+const char* ActException::what() const noexcept
 {
 	return "Wrong action!!! Try again: \n";
 }
 
-const char* RepeatTransportException::what() const
+const char* RepeatTransportException::what() const noexcept
 {
 	return " already registered! \n";
 }
 
-const char* WrongTransportTypeException::what() const
+const char* WrongTransportTypeException::what() const noexcept
 {
 	return "Attempt to register the wrong type of vehicle!\n";
 }
@@ -147,3 +147,5 @@ Registration::Registration()
 	}
 	regProcess();
 }
+
+Registration::~Registration() = default;

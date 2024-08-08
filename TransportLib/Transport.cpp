@@ -6,14 +6,11 @@ std::map<std::string, std::string> TrType
 	{ "air", "Race for air transport." }
 };
 
-Transport::Transport()
+Transport::Transport() : pace{0}, acttime{0}, relax1{0}, relax2{0}, racetime{0}
 {
-	pace = 0;
-	acttime = 0;
-	relax1 = 0;
-	relax2 = 0;
-	racetime = 0;
 }
+
+Transport::~Transport() = default;
 
 std::string Transport::get_name()
 {
@@ -40,4 +37,9 @@ void Transport::get_info()
 	get_name();
 	get_type();
 	get_pace();
+}
+
+const char* DivNullException::what() const noexcept
+{
+	return "Division by zero! \n";
 }

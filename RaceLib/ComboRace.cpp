@@ -6,3 +6,5 @@ ComboRace::ComboRace()
 	std::cout << "Input the distance of the race: ";
 	std::cin >> distance;
 }
+
+ComboRace::~ComboRace() = default;

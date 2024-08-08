@@ -30,7 +30,7 @@ std::map <int, racetypecreation> rcreation
 	{3, COMBreation}
 };
 
-const char *RaceTypeException::what() const
+const char *RaceTypeException::what() const noexcept
 {
 	return "Input Error!!! Try again: \n";
 }
@@ -64,3 +64,5 @@ RaceCreation::RaceCreation()
 	catch (...) { std::cout << "Unknown Error!!!"; }
 	rcreation[raceTypeChoose];
 }
+
+RaceCreation::~RaceCreation() = default;

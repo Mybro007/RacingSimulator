@@ -6,5 +6,6 @@ protected:
 	float rdctn_fac;
 public:
 	AirTransport(int);
+	virtual ~AirTransport();
 };
 

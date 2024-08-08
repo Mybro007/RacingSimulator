@@ -5,6 +5,7 @@
 #else
 #define TRANSPORT_API __declspec(dllimport)
 #endif
+#include<iostream>
 #include<string>
 #include<map>
 
@@ -22,7 +23,7 @@ protected:
 public:
 	float racetime;
 	Transport();
-
+	virtual ~Transport();
 	virtual std::string get_name();
 
 	virtual std::string get_type();
@@ -32,4 +33,10 @@ public:
 	virtual float get_time(int);
 
 	void get_info();
+};
+
+class DivNullException : std::exception
+{
+public:
+	virtual const char* what() const noexcept;
 };

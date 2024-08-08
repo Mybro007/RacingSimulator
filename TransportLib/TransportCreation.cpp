@@ -60,7 +60,8 @@ Transport* magicCarpetCreation()
 	return tr;
 }
 
-TransportCreation::TransportCreation()
+TransportCreation::TransportCreation() : transportTypeChoose{ -1 }
 {
-	transportTypeChoose = -1;
 }
+
+TransportCreation::~TransportCreation() = default;
