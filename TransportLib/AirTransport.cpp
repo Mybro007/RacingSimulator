@@ -2,7 +2,7 @@
 
 AirTransport::AirTransport(int distance) : Transport()
 {
-	type = TrType["air"];
+	type = 2;
 }
 
 AirTransport::~AirTransport() = default;

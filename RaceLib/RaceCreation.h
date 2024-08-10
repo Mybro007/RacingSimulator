@@ -8,26 +8,12 @@
 #include"GroundRace.h"
 #include"ComboRace.h"
 
-RACE_API void groundRaceCreation();
-
-RACE_API void airRaceCreation();
-
-RACE_API void comboRaceCreation();
-
-typedef void(*racetypecreation)();
-
-GroundRace* groundRace;
-AirRace* airRace;
-ComboRace* comboRace;
 Race* race;
-
-RACE_API extern std::map <int, racetypecreation> rcreation;
 
 class RACE_API RaceCreation
 {
 public:
 	RaceCreation();
-	~RaceCreation();
 	int raceTypeChoose;
 };
 

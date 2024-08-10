@@ -2,7 +2,7 @@
 
 GroundTransport::GroundTransport() : Transport()
 {
-	type = TrType["ground"];
+	type = 1;
 }
 
 GroundTransport::~GroundTransport() = default;

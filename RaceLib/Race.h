@@ -7,19 +7,17 @@
 #endif
 #include<iostream>
 #include<string>
-#include<map>
-
-RACE_API extern std::map <std::string, std::string> RType;
 
 class RACE_API Race
 {
 protected:
 	int distance;
-	std::string raceType;
+	short raceType;
 public:
 	Race();
 	virtual ~Race();
 	int getDistance();
-	std::string getType();
+	const std::string& getTypeName() const;
+	short getType();
 };
 

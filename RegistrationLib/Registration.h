@@ -35,3 +35,9 @@ class WrongTransportTypeException : std::exception
 public:
 	virtual const char* what() const noexcept;
 };
+
+class CompetitorsQuantityException : public std::exception
+{
+public:
+	virtual const char* what() const noexcept;
+};

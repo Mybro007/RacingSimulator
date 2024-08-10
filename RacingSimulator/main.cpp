@@ -30,7 +30,7 @@ int main()
 		}
 		case 2:
 		{
-			RacingProcess finish = RacingProcess(*registr, race);
+			RacingProcess finish = RacingProcess(*registr);
 			break;
 		}
 		}

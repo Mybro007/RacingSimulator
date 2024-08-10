@@ -2,7 +2,7 @@
 
 GroundRace::GroundRace()
 {
-	raceType = RType["groundrace"];
+	raceType = 1;
 	std::cout << "Input the distance of the race: ";
 	std::cin >> distance;
 }

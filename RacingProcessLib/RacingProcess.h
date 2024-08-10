@@ -9,7 +9,7 @@
 class RACINGPROCESS_API RacingProcess
 {
 public:
-	RacingProcess(Registration, Race*);
+	RacingProcess(Registration);
 	~RacingProcess();
 };
 

@@ -14,30 +14,12 @@
 #include"FastCamel.h"
 #include"MagicCarpet.h"
 
-TRANSPORT_API Transport* allTerrainBootsCreation();
-
-TRANSPORT_API Transport* broomCreation();
-
-TRANSPORT_API Transport* camelCreation();
-
-TRANSPORT_API Transport* centaurCreation();
-
-TRANSPORT_API Transport* eagleCreation();
-
-TRANSPORT_API Transport* fastCamelCreation();
-
-TRANSPORT_API Transport* magicCarpetCreation();
-
-typedef Transport* (*transport)();
-
-TRANSPORT_API extern std::map <int, transport> tcreation;
+Transport* object;
 
 class TRANSPORT_API TransportCreation
 {
 	
 public:
 	TransportCreation();
-	~TransportCreation();
-	int transportTypeChoose;
 };
 

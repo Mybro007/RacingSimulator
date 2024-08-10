@@ -2,7 +2,7 @@
 
 AirRace::AirRace()
 {
-	raceType = RType["airrace"];
+	raceType = 2;
 	std::cout << "Input the distance of the race: ";
 	std::cin >> distance;
 }

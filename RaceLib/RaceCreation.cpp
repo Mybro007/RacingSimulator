@@ -1,35 +1,5 @@
 #include "RaceCreation.h"
 
-void groundRaceCreation()
-{
-	groundRace = new GroundRace;
-	race = &(*groundRace);
-}
-
-void airRaceCreation()
-{
-	airRace = new AirRace;
-	race = &(*airRace);
-}
-
-void comboRaceCreation()
-{
-	comboRace = new ComboRace;
-	race = &(*comboRace);
-}
-
-void(&GRCreation)() = groundRaceCreation;
-void(&AIRCreation)() = airRaceCreation;
-void(&COMBreation)() = comboRaceCreation;
-
-
-std::map <int, racetypecreation> rcreation
-{
-	{1, GRCreation},
-	{2, AIRCreation},
-	{3, COMBreation}
-};
-
 const char *RaceTypeException::what() const noexcept
 {
 	return "Input Error!!! Try again: \n";
@@ -62,7 +32,25 @@ RaceCreation::RaceCreation()
 		}
 	}
 	catch (...) { std::cout << "Unknown Error!!!"; }
-	rcreation[raceTypeChoose];
+	switch (raceTypeChoose)
+	{
+		case 1:
+		{
+			GroundRace* grRace = new GroundRace;
+			race = grRace;
+		}
+		break;
+		case 2:
+		{
+			AirRace* arRace = new AirRace;
+			race = arRace;
+		}
+		break;
+		case 3:
+		{
+			ComboRace* cmbRace = new ComboRace;
+			race = cmbRace;
+		}
+		break;
+	}
 }
-
-RaceCreation::~RaceCreation() = default;

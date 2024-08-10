@@ -1,25 +1,19 @@
 #include "Transport.h"
 
-std::map<std::string, std::string> TrType
-{
-	{"ground", "Race for ground transport."},
-	{ "air", "Race for air transport." }
-};
-
-Transport::Transport() : pace{0}, acttime{0}, relax1{0}, relax2{0}, racetime{0}
+Transport::Transport() : pace{ 0 }, type{ 0 }, acttime{ 0 }, relax1{ 0 }, relax2{ 0 }, racetime{ 0 }
 {
 }
 
 Transport::~Transport() = default;
 
-std::string Transport::get_name()
+const std::string &Transport::get_name() const
 {
 	return name;
 }
 
-std::string Transport::get_type()
+short Transport::get_type()
 {
-	return TrType[type];
+	return type;
 }
 
 unsigned int Transport::get_pace()

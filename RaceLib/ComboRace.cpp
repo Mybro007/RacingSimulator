@@ -2,7 +2,7 @@
 
 ComboRace::ComboRace()
 {
-	raceType = RType["combo"];
+	raceType = 3;
 	std::cout << "Input the distance of the race: ";
 	std::cin >> distance;
 }

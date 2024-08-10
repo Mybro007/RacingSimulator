@@ -7,15 +7,12 @@
 #endif
 #include<iostream>
 #include<string>
-#include<map>
-
-TRANSPORT_API extern std::map<std::string, std::string> TrType;
 
 class TRANSPORT_API Transport
 {
 protected:
 	std::string name;
-	std::string type;
+	short type;
 	unsigned int pace;
 	unsigned int acttime;
 	unsigned int relax1;
@@ -24,9 +21,9 @@ public:
 	float racetime;
 	Transport();
 	virtual ~Transport();
-	virtual std::string get_name();
+	virtual const std::string& get_name() const;
 
-	virtual std::string get_type();
+	virtual short get_type();
 
 	virtual unsigned int get_pace();
 

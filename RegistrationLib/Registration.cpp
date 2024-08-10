@@ -16,11 +16,16 @@ const char* WrongTransportTypeException::what() const noexcept
 	return "Attempt to register the wrong type of vehicle!\n";
 }
 
+const char* CompetitorsQuantityException::what() const noexcept
+{
+	return "Insufficient number of participants!\n";
+}
+
 void Registration::regProcess()
 {
 	while (choosetr != 0)
 	{
-		std::cout << race->getType() << " Distance: " << race->getDistance() << "\n";
+		std::cout << race->getTypeName() << " Distance: " << race->getDistance() << "\n";
 		if (!participants.empty())
 		{
 			std::cout << "Registered transport: ";
@@ -59,13 +64,76 @@ void Registration::regProcess()
 			}
 		}
 
-		if (choosetr == 0) break;
-
-		Transport* object = (Transport*)tcreation[choosetr];
+		switch (choosetr)
+		{
+			case 0:
+			{
+				try
+				{
+					if (participants.size() < 1)
+					{
+						throw CompetitorsQuantityException();
+					}
+					else
+					{
+						std::cout << "\nRegistration is complited!\n";
+						break;
+					}
+				}
+				catch (const CompetitorsQuantityException& ex)
+				{
+					std::cout << ex.what();
+					continue;
+				}
+			}
+			break;
+			case 1:
+			{
+				AllTerrainBoots* tr = new AllTerrainBoots;
+				object = tr;
+			}
+			break;
+			case 2:
+			{
+				Broom* tr = new Broom(race->getDistance());
+				object = tr;
+			}
+			break;
+			case 3:
+			{
+				Camel *tr = new Camel;
+				object = tr;
+			}
+			break;
+			case 4:
+			{
+				Centaur* tr = new Centaur;
+				object = tr;
+			}
+			break;
+			case 5:
+			{
+				Eagle* tr = new Eagle(race->getDistance());
+				object = tr;
+			}
+			break;
+			case 6:
+			{
+				FastCamel* tr = new FastCamel;
+				object = tr;
+			}
+			break;
+			case 7:
+			{
+				MagicCarpet* tr = new MagicCarpet(race->getDistance());
+				object = tr;
+			}
+			break;
+		}
 
 		//checking registration conditions
 		bool typeCorresp = false;
-		if (race->getType() == "Race for all types of transport.")
+		if (race->getType() == 3)
 		{
 			typeCorresp = true;
 		}

@@ -1,15 +1,7 @@
 #include "Race.h"
 
-std::map <std::string, std::string> RType
+Race::Race() : raceType{-1}, distance{0}
 {
-	{"groundrace", "Race for ground transport."},
-	{"airrace", "Race for air transport."},
-	{"combo", "Race for all types of transport."}
-};
-
-Race::Race()
-{
-	distance = 0;
 }
 
 int Race::getDistance()
@@ -17,9 +9,31 @@ int Race::getDistance()
 	return distance;
 }
 
-std::string Race::getType()
+short Race::getType()
 {
 	return raceType;
+}
+
+const std::string& Race::getTypeName() const
+{
+	switch (raceType)
+	{
+		case 1:
+		{
+			return "Race for ground transport!";
+		}
+		break;
+		case 2:
+		{
+			return "Race for air transport!";
+		}
+		break;
+		case 3:
+		{
+			return "Race for all types of transport!";
+		}
+		break;
+	}
 }
 
 Race::~Race() = default;
