@@ -8,11 +8,10 @@
 #include"GroundRace.h"
 #include"ComboRace.h"
 
-Race* race;
-
 class RACE_API RaceCreation
 {
 public:
+	Race* race;
 	RaceCreation();
 	int raceTypeChoose;
 };

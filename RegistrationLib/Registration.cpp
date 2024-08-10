@@ -8,31 +8,41 @@ const char* ActException::what() const noexcept
 
 const char* RepeatTransportException::what() const noexcept
 {
-	return " already registered! \n";
+	return " already registered!\n";
 }
 
 const char* WrongTransportTypeException::what() const noexcept
 {
-	return "Attempt to register the wrong type of vehicle!\n";
+	return "Attempt to register the wrong type of vehicle!";
 }
 
 const char* CompetitorsQuantityException::what() const noexcept
 {
-	return "Insufficient number of participants!\n";
+	return "Error!!! Insufficient number of participants! The program is over!!!\n";
 }
 
-void Registration::regProcess()
+void Registration::regProcess(Race* race, Transport* object)
 {
+	choosetr = -1;
 	while (choosetr != 0)
 	{
-		std::cout << race->getTypeName() << " Distance: " << race->getDistance() << "\n";
-		if (!participants.empty())
+		race->getTypeName();
+		std::cout << " Distance: " << race->getDistance() << "\n";
+		if (!(participants.empty()))
 		{
 			std::cout << "Registered transport: ";
 			for (size_t i = 0; i < participants.size(); ++i)
 			{
-				std::cout << participants[i]->get_name() << " ";
+				if (i == participants.size() - 1)
+				{
+					std::cout << participants[i]->get_name() << ".";
+				}
+				else
+				{
+					std::cout << participants[i]->get_name() << ", ";
+				}
 			}
+			std::cout << "\n";
 		}
 		std::cout << "1. All-Terrain Boots\n" <<
 			"2. Broom\n" <<
@@ -63,6 +73,8 @@ void Registration::regProcess()
 				}
 			}
 		}
+		std::cout << "\n\n";
+		bool completed = false;
 
 		switch (choosetr)
 		{
@@ -77,13 +89,14 @@ void Registration::regProcess()
 					else
 					{
 						std::cout << "\nRegistration is complited!\n";
+						completed = true;
 						break;
 					}
 				}
 				catch (const CompetitorsQuantityException& ex)
 				{
 					std::cout << ex.what();
-					continue;
+					exit(0);
 				}
 			}
 			break;
@@ -131,62 +144,65 @@ void Registration::regProcess()
 			break;
 		}
 
-		//checking registration conditions
-		bool typeCorresp = false;
-		if (race->getType() == 3)
+		if (!completed)
 		{
-			typeCorresp = true;
-		}
-		else if (race->getType() == object->get_type())
-		{
-			typeCorresp = true;
-		}
-		else
-		{
-			typeCorresp = false;
-		}
-		try
-		{
-			if (!typeCorresp)
+			//checking registration conditions
+			bool typeCorresp = false;
+			if (race->getType() == 3)
 			{
-				throw WrongTransportTypeException();
+				typeCorresp = true;
 			}
-		}
-		catch (const WrongTransportTypeException& ex)
-		{
-			std::cout << ex.what();
-			continue;
-		}
-
-		if (typeCorresp && participants.empty())
-		{
-			participants.push_back(object);
-			std::cout << object->get_name() << " successfully registered!\n";
-		}
-		else if (typeCorresp)
-		{
+			else if (race->getType() == object->get_type())
+			{
+				typeCorresp = true;
+			}
+			else
+			{
+				typeCorresp = false;
+			}
 			try
 			{
-				for (size_t i = 0; i < participants.size(); ++i)
+				if (!typeCorresp)
 				{
-					if (participants[i]->get_name() == object->get_name())
-					{
-						throw RepeatTransportException();
-					}
+					throw WrongTransportTypeException();
 				}
 			}
-			catch (const RepeatTransportException& ex)
+			catch (const WrongTransportTypeException& ex)
 			{
-				std::cout << object->get_name() << ex.what();
+				std::cout << ex.what();
 				continue;
 			}
-			participants.push_back(object);
-			std::cout << object->get_name() << " successfully registered!\n";
+
+			if (typeCorresp && participants.empty())
+			{
+				participants.push_back(object);
+				std::cout << object->get_name() << " successfully registered!\n";
+			}
+			else if (typeCorresp)
+			{
+				try
+				{
+					for (size_t i = 0; i < participants.size(); ++i)
+					{
+						if (participants[i]->get_name() == object->get_name())
+						{
+							throw RepeatTransportException();
+						}
+					}
+					participants.push_back(object);
+					std::cout << object->get_name() << " successfully registered!\n";
+				}
+				catch (const RepeatTransportException& ex)
+				{
+					std::cout << object->get_name() << ex.what();
+					continue;
+				}
+			}
 		}
 	}
 }
 
-Registration::Registration()
+Registration::Registration(Race* race, Transport* object)
 {
 	act = 0;
 	choosetr = -1;
@@ -213,7 +229,8 @@ Registration::Registration()
 			}
 		}
 	}
-	regProcess();
+	std::cout << "\n\n";
+	regProcess(race, object);
 }
 
 Registration::~Registration() = default;

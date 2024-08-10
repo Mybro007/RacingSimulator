@@ -14,23 +14,23 @@ short Race::getType()
 	return raceType;
 }
 
-const std::string& Race::getTypeName() const
+void Race::getTypeName()
 {
 	switch (raceType)
 	{
 		case 1:
 		{
-			return "Race for ground transport!";
+			std::cout << "Race for ground transport!";
 		}
 		break;
 		case 2:
 		{
-			return "Race for air transport!";
+			std::cout << "Race for air transport!";
 		}
 		break;
 		case 3:
 		{
-			return "Race for all types of transport!";
+			std::cout << "Race for all types of transport!";
 		}
 		break;
 	}

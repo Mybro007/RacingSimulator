@@ -5,14 +5,15 @@ Broom::Broom(int distance) : AirTransport(distance)
 {
 	name = "Broom";
 	pace = 20;
-	rdctn_fac = distance / 1000;
+	int rdctn_percent = distance / 1000;
+	rdctn_fac = static_cast<float>(rdctn_percent)/100;
 }
 
 Broom::~Broom() = default;
 
 float Broom::get_time(int distance)
 {
-	float changeddistance = distance * rdctn_fac;
+	float changeddistance = distance * (1-rdctn_fac);
 	try
 	{
 		if (pace == 0)

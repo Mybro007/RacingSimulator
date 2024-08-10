@@ -17,7 +17,7 @@ public:
 	Race();
 	virtual ~Race();
 	int getDistance();
-	const std::string& getTypeName() const;
+	void getTypeName();
 	short getType();
 };
 

@@ -1,6 +1,6 @@
 #include "Transport.h"
 
-Transport::Transport() : pace{ 0 }, type{ 0 }, acttime{ 0 }, relax1{ 0 }, relax2{ 0 }, racetime{ 0 }
+Transport::Transport() : pace{ 0 }, type{ 0 }, racetime{ 0 }
 {
 }
 

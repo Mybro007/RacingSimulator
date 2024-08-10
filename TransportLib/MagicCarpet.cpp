@@ -27,7 +27,7 @@ MagicCarpet::~MagicCarpet() = default;
 
 float MagicCarpet::get_time(int distance)
 {
-	float changeddistance = distance * rdctn_fac;
+	float changeddistance = distance * (1-rdctn_fac);
 	try
 	{
 		if (pace == 0)

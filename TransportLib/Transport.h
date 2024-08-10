@@ -14,9 +14,6 @@ protected:
 	std::string name;
 	short type;
 	unsigned int pace;
-	unsigned int acttime;
-	unsigned int relax1;
-	float relax2;
 public:
 	float racetime;
 	Transport();

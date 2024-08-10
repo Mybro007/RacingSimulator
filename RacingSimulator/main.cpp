@@ -15,7 +15,8 @@ int main()
 	while (finishAct!=2)
 	{
 		RaceCreation* raceCreation = new RaceCreation;
-		Registration* registr = new Registration();
+		TransportCreation* transportCreation = new TransportCreation;
+		Registration* registr = new Registration(raceCreation->race, transportCreation->object);
 		jumpMenu(mainAct);
 		switch (mainAct)
 		{
@@ -23,19 +24,20 @@ int main()
 		{
 			while (mainAct != 2)
 			{
-				registr->regProcess();
+				registr->regProcess(raceCreation->race, transportCreation->object);
 				jumpMenu(mainAct);
 			}
-
 		}
 		case 2:
 		{
-			RacingProcess finish = RacingProcess(*registr);
-			break;
+			RacingProcess* finish = new RacingProcess(*registr, raceCreation->race);
+			delete finish;
 		}
+		break;
 		}
-		delete raceCreation;
 		delete registr;
+		delete transportCreation;
+		delete raceCreation;
 		finishMenu(finishAct);
 	}
 	return 0;
@@ -70,6 +72,7 @@ void jumpMenu(short& mainAct)
 			std::cin >> mainAct;
 		}
 	}
+	std::cout << "\n\n";
 }
 
 void finishMenu(short& finishAct)

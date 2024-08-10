@@ -1,6 +1,6 @@
 #include "RacingProcess.h"
 
-RacingProcess::RacingProcess(Registration reg)
+RacingProcess::RacingProcess(Registration& reg, Race* race)
 {
 	for (size_t i = 0; i < reg.participants.size(); ++i)
 	{
@@ -20,8 +20,4 @@ RacingProcess::RacingProcess(Registration reg)
 	}
 }
 
-RacingProcess::~RacingProcess()
-{
-	delete object;
-	delete race;
-}
+RacingProcess::~RacingProcess() = default;

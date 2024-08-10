@@ -14,12 +14,11 @@
 #include"FastCamel.h"
 #include"MagicCarpet.h"
 
-Transport* object;
-
 class TRANSPORT_API TransportCreation
 {
 	
 public:
+	Transport* object;
 	TransportCreation();
 };
 

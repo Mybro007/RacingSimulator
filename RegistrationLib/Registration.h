@@ -13,9 +13,9 @@ public:
 	std::vector<Transport*> participants;
 	short act;
 	short choosetr;
-	Registration();
+	Registration(Race*, Transport*);
 	~Registration();
-	void regProcess();
+	void regProcess(Race*, Transport*);
 };
 
 class ActException : public std::exception
